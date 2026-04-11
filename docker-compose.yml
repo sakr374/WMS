@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: wms_user
+      POSTGRES_PASSWORD: secure_password_here
+      POSTGRES_DB: wms_production
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wms_user -d wms_production"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    # We don't need to override the command; the Dockerfile's ENTRYPOINT and CMD will run Thruster
+    environment:
+      DATABASE_URL: postgres://wms_user:secure_password_here@db/wms_production
+      RAILS_ENV: production
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+    ports:
+      - "8000:80" # Maps your machine's 8000 to the container's Thruster port 80
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

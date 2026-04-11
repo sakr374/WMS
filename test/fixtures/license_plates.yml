@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  inventory: one
+  batch_number: MyString
+  expiration: 2026-03-28
+  stock: 1
+  reserved: 1
+  available: 1
+  tag: MyString
+  location_path: MyString
+  license_number: MyString
+
+two:
+  inventory: two
+  batch_number: MyString
+  expiration: 2026-03-28
+  stock: 1
+  reserved: 1
+  available: 1
+  tag: MyString
+  location_path: MyString
+  license_number: MyString

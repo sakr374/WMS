@@ -1,0 +1,59 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sku: MyString
+  name: MyString
+  upc: MyString
+  uom_base: MyString
+  is_active: false
+  is_kit: false
+  is_batch: false
+  is_serial: false
+  is_hazard: false
+  cost: 9.99
+  currency: MyString
+  category: MyString
+  storage: MyString
+  coo: MyString
+  hs_code: MyString
+  uom_base_length: 9.99
+  uom_base_width: 9.99
+  uom_base_height: 9.99
+  uom_base_weight: 9.99
+  warehouse_code: MyString
+  warehouse_name: MyString
+  customer_id: 1
+  account: MyString
+  ringfence_tag: MyString
+  location: MyString
+  lp_number: MyString
+  lp_creation_date: 2026-03-28 22:30:39
+
+two:
+  sku: MyString
+  name: MyString
+  upc: MyString
+  uom_base: MyString
+  is_active: false
+  is_kit: false
+  is_batch: false
+  is_serial: false
+  is_hazard: false
+  cost: 9.99
+  currency: MyString
+  category: MyString
+  storage: MyString
+  coo: MyString
+  hs_code: MyString
+  uom_base_length: 9.99
+  uom_base_width: 9.99
+  uom_base_height: 9.99
+  uom_base_weight: 9.99
+  warehouse_code: MyString
+  warehouse_name: MyString
+  customer_id: 1
+  account: MyString
+  ringfence_tag: MyString
+  location: MyString
+  lp_number: MyString
+  lp_creation_date: 2026-03-28 22:30:39
