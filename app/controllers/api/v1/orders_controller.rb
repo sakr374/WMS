@@ -1,19 +1,21 @@
 class Api::V1::OrdersController < ApplicationController
-    def index
-      raw_data = WmsClient.fetch(request.fullpath, @current_token)
-  
-      if raw_data['records']
-        Thread.new do
-          Rails.application.executor.wrap do
-            DbSyncer.sync_orders(raw_data['records'])
-          end
+  def index
+    result = WmsClient.fetch(request.fullpath, @current_token)
+    raw_data = result[:body]
+ 
+    if result[:status] == 200 && raw_data['records']
+      Thread.new do
+        Rails.application.executor.wrap do
+          DbSyncer.sync_orders(raw_data['records'])
         end
       end
-  
-      render json: raw_data
     end
-  
-    def show
-      render json: WmsClient.fetch(request.fullpath, @current_token)
-    end
+ 
+    render json: raw_data, status: result[:status]
   end
+ 
+  def show
+    result = WmsClient.fetch(request.fullpath, @current_token)
+    render json: result[:body], status: result[:status]
+  end
+end
